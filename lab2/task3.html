@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+  <style>
+    div{
+      line-height: 0.5;
+    }
+  </style>
+  <script type="text/javascript">
+    document.write("*" + "</br>")
+    for(let y=1;y<5;y++){
+      document.write("*");
+      if(!(y===4)){
+        for(let x=0;x<y;x++){
+          document.write('\u2007');
+        }
+        document.write("*");
+      }
+      else{
+        for(let x=0;x<y+1;x++){
+          document.write("*");
+        }
+      }
+      document.write("</br>");
+    }
+
+    document.write("</br>");
+    /*
+    Используя символ * нарисовать в окне браузера:
+     Прямоугольник,
+     Прямоугольный треугольник,
+     Равносторонний треугольник,
+     Ромб
+    */
+  </script>
+  <div>
+    <script type="text/javascript">
+      for(let y=0;y<5;y++){
+
+        if(!(y===0||y===4)){
+          for(let x=0;x<10;x++){
+            if(x===0||x===9){
+              document.write("*");
+            }
+            else{
+              document.write("\u2007");
+            }
+          }
+        }
+        else{
+          for(let x=0;x<10;x++) {
+            document.write("*");
+          }
+        }
+        document.write("</br>");
+      }
+
+      document.write("</br>")
+
+      //полностью равносторонний героновый треугольник нарисовать невозможно, тк таких треугольников не существует
+      //площадь правильного треугольника с рациональными сторонами является числом иррациональным
+      //те целым количеством звёздочек по высоте и ширине его не нарисовать
+      //почти равносторонний треугольник:
+
+     for(let y=0,j=1;y<4,j<8;y++,j+=2){
+       for(let i=1;i<4-y;i++){
+         document.write("\u2007");
+       }
+
+       for(let x=0;x<j;x++){
+         document.write("*");
+       }
+       document.write("</br>");
+     }
+
+     document.write("</br>");
+
+      for(let y=0,j=1;y<4,j<8;y++,j+=2){
+        for(let i=1;i<4-y;i++){
+          document.write("\u2007");
+        }
+
+        for(let x=0;x<j;x++){
+          document.write("*");
+        }
+        document.write("</br>");
+      }
+      for(let y=0,j=8;y<4,j>0;y++,j-=2){
+
+        for(let i=0;i<y;i++){
+          document.write("\u2007");
+        }
+
+        for(let x=j-1;x>0;x--){
+          document.write("*");
+        }
+
+
+
+
+        document.write("</br>");
+      }
+    </script>
+
+
+
+
+  </div>
+</head>
+<body>
+
+</body>
+</html>
