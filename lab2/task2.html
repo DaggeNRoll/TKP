@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <title></title>
+  <script type="text/javascript">
+
+    let arr = new Array(10);
+
+    for(let i=0;i<10;i++){
+      arr[i]=new Array(10);
+    }
+
+    for(let i=0;i<10;i++){
+      for(let j=0;j<10;j++){
+        if(i!==j){
+          arr[i][j]=1;
+        }
+      }
+    }
+
+    let start=0;
+    let end=9;
+    document.write("huy");
+
+    function countPaths(matrix, start, end){
+      let sum=0;
+      if(start===end){
+        return 1;
+      }
+      else{
+        for(let i =0;i<10;i++){
+          for(let j=0;j<10;j++){
+            if(matrix[i][j]!==0){
+              sum+=countPaths(matrix,j,end);
+            }
+          }
+        }
+      }
+      return sum;
+    }
+
+    let res = countPaths(arr,start,end);
+    document.write("huy");
+    document.write(" " + res);
+
+
+
+    /*
+    Пусть есть 10 магазинов, между каждой парой магазинов есть путь.
+    Напишите код вычисления количества возможных маршрутов обхода всех магазинов.
+    Результать отобразить в окне браузера
+    */
+  </script>
+</head>
+<body>
+</body>
+</html>
