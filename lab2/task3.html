@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
   <title></title>
   <style>
@@ -7,17 +7,19 @@
       line-height: 0.5;
     }
   </style>
+
   <script type="text/javascript">
-    document.write("*" + "</br>")
-    for(let y=1;y<5;y++){
-      document.write("*");
-      if(!(y===4)){
-        for(let x=0;x<y;x++){
+    //прямоугольный треугольник
+    document.write("*" + "</br>")//первая строка
+    for(let y=1;y<5;y++){//цикл по вертикали
+      document.write("*");//первый столбец
+      if(!(y===4)){//если строка не последняя
+        for(let x=0;x<y;x++){//пробел, равный по ширине звезде
           document.write('\u2007');
         }
         document.write("*");
       }
-      else{
+      else{//если строка последняя
         for(let x=0;x<y+1;x++){
           document.write("*");
         }
@@ -36,19 +38,20 @@
   </script>
   <div>
     <script type="text/javascript">
-      for(let y=0;y<5;y++){
+      //прямоугольник
+      for(let y=0;y<5;y++){//цикл по вертикали
 
-        if(!(y===0||y===4)){
+        if(!(y===0||y===4)){//если не первая или последняя строка
           for(let x=0;x<10;x++){
-            if(x===0||x===9){
+            if(x===0||x===9){//если первый или последний столбец
               document.write("*");
             }
-            else{
+            else{//пробелы
               document.write("\u2007");
             }
           }
         }
-        else{
+        else{//первая или последняя строка
           for(let x=0;x<10;x++) {
             document.write("*");
           }
@@ -63,12 +66,12 @@
       //те целым количеством звёздочек по высоте и ширине его не нарисовать
       //почти равносторонний треугольник:
 
-     for(let y=0,j=1;y<4,j<8;y++,j+=2){
-       for(let i=1;i<4-y;i++){
+     for(let y=0,j=1;y<4,j<8;y++,j+=2){//цикл по вертикали
+       for(let i=1;i<4-y;i++){//цикл для пробелов
          document.write("\u2007");
        }
 
-       for(let x=0;x<j;x++){
+       for(let x=0;x<j;x++){//цикл для звёзд
          document.write("*");
        }
        document.write("</br>");
@@ -76,7 +79,7 @@
 
      document.write("</br>");
 
-      for(let y=0,j=1;y<4,j<8;y++,j+=2){
+      for(let y=0,j=1;y<4,j<8;y++,j+=2){//верхняя часть - треугольник
         for(let i=1;i<4-y;i++){
           document.write("\u2007");
         }
@@ -86,7 +89,8 @@
         }
         document.write("</br>");
       }
-      for(let y=0,j=8;y<4,j>0;y++,j-=2){
+
+      for(let y=0,j=8;y<4,j>0;y++,j-=2){//нижняя часть - перевёрнутый треугольник
 
         for(let i=0;i<y;i++){
           document.write("\u2007");
@@ -95,9 +99,6 @@
         for(let x=j-1;x>0;x--){
           document.write("*");
         }
-
-
-
 
         document.write("</br>");
       }

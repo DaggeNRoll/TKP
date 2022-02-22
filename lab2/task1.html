@@ -7,16 +7,16 @@
         var b = 15;
         var sum=0;
 
-        for(let i=a;i <= b;i++){
-            sum+=i;
+        for(let i=a;i <= b;i++){//цикл по всем числам от а до б включительно
+            sum+=i;//суммирование
         }
 
-        document.write("1) " + sum + "<br/>");
+        document.write("1) " + sum + "<br/>");//вывод на экран
         document.writeln("2) ");
 
-        for(let i=a;i<b;i++){
-            if(i%2===0){
-                document.write(i + " ");
+        for(let i=a;i<b;i++){//цикл по всем числам от а, до б, не включая б
+            if(i%2===0){//остаток от деления на 2
+                document.write(i + " ");//вывод на экран
             }
         }
 
