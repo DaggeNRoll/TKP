@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8c460207-1577-4a41-ac2d-4c77dc40e244" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/task1.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/task1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/task2.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/task2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/task3.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/task3.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +45,18 @@
       <updated>1644328951212</updated>
       <workItem from="1644328952378" duration="42000" />
       <workItem from="1645291036266" duration="6823000" />
-      <workItem from="1645521483390" duration="979000" />
+      <workItem from="1645521483390" duration="1022000" />
+      <workItem from="1645781096457" duration="1189000" />
+      <workItem from="1645874565815" duration="34000" />
     </task>
+    <task id="LOCAL-00001" summary="comments lab2">
+      <created>1645522496330</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1645522496331</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -65,5 +72,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="comments lab2" />
+    <option name="LAST_COMMIT_MESSAGE" value="comments lab2" />
   </component>
 </project>
