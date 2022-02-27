@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        let stack = [];
+
+        do {
+            const choice = prompt("1 - добавить элемент, 2 - удалить элемент, 3 - вывести на экран");
+
+            switch (choice) {
+                case "1":
+                    const number = prompt("введите число для добавления в стек");
+                    stack.push(number);
+                    break;
+                case "2":
+                    if (stack.length > 0) {
+                        stack.pop();
+                    } else {
+                        alert("Стек пуст!");
+                    }
+                    break;
+                case "3":
+                    if(stack.length>0) {
+                        alert(stack);
+                    }
+                    else{
+                        alert("Стек пуст!");
+                    }
+                    break;
+            }
+        } while(confirm("Хотите продолжить?"))
+        /*
+         Написать код программной модели стека
+        */
+    </script>
+</head>
+<body>
+</body>
+</html>
+</head>
+<body>
+
+</body>
+</html>
