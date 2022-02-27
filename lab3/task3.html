@@ -12,11 +12,11 @@
             switch (choice) {
                 case "1":
                     const number = prompt("введите число для добавления в стек");
-                    stack.push(number);
+                    stack.unshift(number);
                     break;
                 case "2":
                     if (stack.length > 0) {
-                        stack.pop();
+                        stack.shift();
                     } else {
                         alert("Стек пуст!");
                     }
