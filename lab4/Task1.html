@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+
+        function sum(a,b){
+            let res = a+b;
+            document.write("a + b = " + res + "</br>");
+        }
+
+        function sub(a,b){
+            let res = a-b;
+            document.write("a - b = " + res + "</br>");
+        }
+
+        function mul(a,b){
+            let res = a*b;
+            document.write("a * b = " + res + "</br>");
+        }
+
+        function div(a,b){
+            if(b===0){
+                document.write("division by 0!</br>");
+            }
+            else{
+                let res = a/b;
+                document.write("a / b = " + res + "</<br>")
+            }
+        }
+
+        let a = parseInt(prompt("Enter a"));
+        let b = parseInt(prompt("Enter b"));
+
+        sum(a,b);
+        sub(a,b);
+        mul(a,b);
+        div(a,b);
+        /*
+         Создать функции двух аргументов:
+         сложения,
+         вычитания,
+         умножения,
+         деления.
+         В каждой функции предусмотреть вывод результата в окне браузера в формате:
+         a + b = 8
+         a - b = 3
+         a * b = 16
+         a / b = 2
+         Попытка деления на 0.
+        */
+    </script>
+</head>
+<body>
+
+</body>
+</html>

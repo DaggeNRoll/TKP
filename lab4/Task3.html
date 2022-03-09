@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+
+        let stack = [];
+
+        function stackPush() {
+            const number = prompt("введите число для добавления в стек");
+            stack.unshift(number);
+        }
+
+        function stackPop() {
+            if (stack.length > 0) {
+                stack.shift();
+            } else {
+                alert("Стек пуст!");
+            }
+        }
+
+        function showStack() {
+            if (stack.length > 0) {
+                alert(stack);
+            } else {
+                alert("Стек пуст!");
+            }
+        }
+
+        let queue = [];
+        let rear = -1;
+        let front = -1;
+        let size;
+
+        function queuePush(size) {
+            if (front === 0 && rear === size - 1 || front === rear + 1) {
+                alert("Очередь заполнена!");
+            } else {
+                const number = prompt("Введите число для добавления в очередь:");
+                if (front === -1) {
+                    front = 0;
+                }
+                rear = (rear + 1) % size;
+                queue[rear] = number;
+            }
+        }
+
+        function queuePop(size) {
+            if (front === -1) {
+                alert("Очередь пуста!");
+            } else {
+
+                queue.pop();
+
+                if (front === rear) {
+                    front = -1;
+                    rear = -1;
+                } else {
+                    front = (front + 1) % size;
+                }
+            }
+        }
+
+        function showQueue(){
+            if(front===-1){
+                alert("Очередь пуста!");
+            }
+            else {
+                alert(queue);
+            }
+        }
+
+        let choice = parseInt(prompt("Что вы хотите использовать? (стек - 0, очередь - 1)"));
+
+        if(!choice){
+            do {
+                const choice = prompt("1 - добавить элемент, 2 - удалить элемент, 3 - вывести на экран");
+
+                switch (choice) {
+                    case "1":
+                        stackPush();
+                        break;
+                    case "2":
+                        stackPop();
+                        break;
+                    case "3":
+                        showStack();
+                        break;
+                }
+            } while(confirm("Хотите продолжить?"))
+        }
+        else{
+            size = parseInt(prompt("Введите размер очереди"));
+            do {
+                const choice = prompt("1 - добавить элемент, 2 - удалить элемент, 3 - вывести на экран");
+
+                switch (choice) {
+                    case "1":
+                        queuePush(size);
+                        break;
+                    case "2":
+                        queuePop(size);
+                        break;
+                    case "3":
+                        showQueue();
+                        break;
+                }
+            } while(confirm("Хотите продолжить?"))
+        }
+
+        /*
+         Для задач программного моделирования стека и циклической очереди оформить в виде функций:
+         добавление элемента в стек
+         извлечение элемента из стека
+         добавление элемента в очередь
+         извлечение элемента из очереди
+        */
+    </script>
+</head>
+<body>
+
+</body>
+</html>
