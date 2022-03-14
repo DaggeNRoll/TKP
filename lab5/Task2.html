@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        let Queue = {
+            arr: [],
+            rear: -1,
+            front: -1,
+            size: 0,
+
+            SetSize: function (size) {
+                this.size = size;
+            },
+
+            Push: function (x) {
+                if (this.front === 0 && this.rear === this.size - 1 || this.front === this.rear + 1) {
+                    alert("Очередь заполнена!");
+                } else {
+                    if (this.front === -1) {
+                        this.front = 0;
+                    }
+                    this.rear = (this.rear + 1) % this.size;
+                    this.arr[this.rear] = x;
+                }
+            },
+
+            Pop: function () {
+                if (this.front === -1) {
+                    alert("Очередь пуста!");
+                } else {
+                    if (this.front === this.rear) {
+                        this.front = -1;
+                        this.rear = -1;
+                    } else {
+                        this.front = (this.front + 1) % this.size;
+                    }
+
+                    return this.arr.pop();
+                }
+            },
+
+            Show: function () {
+                if (this.front === -1) {
+                    alert("Очередь пуста!");
+                } else {
+                    alert(this.arr);
+                }
+            }
+        }
+
+        size = parseInt(prompt("Введите размер очереди"));
+        Queue.SetSize(size);
+        do {
+            const choice = prompt("1 - добавить элемент, 2 - удалить элемент, 3 - вывести на экран");
+
+            switch (choice) {
+                case "1":
+                    Queue.Push(parseInt(prompt("Введите число")));
+                    break;
+                case "2":
+                    alert(Queue.Pop());
+                    break;
+                case "3":
+                    Queue.Show();
+                    break;
+            }
+        } while (confirm("Хотите продолжить?"))
+
+        /*
+         Создать программную модель циклической очереди, используя объектно-ориентированный подход
+        */
+    </script>
+</head>
+<body>
+
+</body>
+</html>

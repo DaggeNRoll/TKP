@@ -5,26 +5,24 @@
     <title>Title</title>
     <script type="text/javascript">
         let stack = {
-            arr : [],
+            arr: [],
 
-            Push: function(x){
+            Push: function (x) {
                 this.arr.unshift(x);
             },
 
-            Pop: function (){
-                if(this.arr.length>0){
+            Pop: function () {
+                if (this.arr.length > 0) {
                     return this.arr.shift();
-                }
-                else{
+                } else {
                     alert("Стек пуст!");
                 }
             },
 
-            Show: function (){
-                if(this.arr.length>0){
+            Show: function () {
+                if (this.arr.length > 0) {
                     alert(this.arr);
-                }
-                else{
+                } else {
                     alert("Стек пуст!");
                 }
             }
@@ -45,7 +43,7 @@
                     stack.Show();
                     break;
             }
-        } while(confirm("Хотите продолжить?"))
+        } while (confirm("Хотите продолжить?"))
 
         /*
          Создать программную модель стека, используя объектно-ориентированный подход
