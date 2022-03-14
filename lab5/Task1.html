@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        let stack = {
+            arr : [],
+
+            Push: function(x){
+                this.arr.unshift(x);
+            },
+
+            Pop: function (){
+                if(this.arr.length>0){
+                    return this.arr.shift();
+                }
+                else{
+                    alert("Стек пуст!");
+                }
+            },
+
+            Show: function (){
+                if(this.arr.length>0){
+                    alert(this.arr);
+                }
+                else{
+                    alert("Стек пуст!");
+                }
+            }
+
+        }
+
+        do {
+            const choice = prompt("1 - добавить элемент, 2 - удалить элемент, 3 - вывести на экран");
+
+            switch (choice) {
+                case "1":
+                    stack.Push(parseInt(prompt("Введите число")));
+                    break;
+                case "2":
+                    alert("Был удалён элемент " + stack.Pop());
+                    break;
+                case "3":
+                    stack.Show();
+                    break;
+            }
+        } while(confirm("Хотите продолжить?"))
+
+        /*
+         Создать программную модель стека, используя объектно-ориентированный подход
+        */
+    </script>
+</head>
+<body>
+
+</body>
+</html>
