@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        class Node{
+
+            constructor(left=null, right=null, data){
+                this.left=left;
+                this.right=right;
+                this.data=data;
+            }
+
+        }
+
+        let DoubleLinkedList = {
+            Nodes : [],
+            size:0,
+            rear:NaN,
+            front:NaN,
+
+            AddRear : function(data){
+                if(!this.IsEmpty()){
+                    Nodes[size] = new Node(rear, null, data);
+                    rear=Nodes[size++];
+                }
+                else{
+                    rear = new Node(null,null,data);
+                    Nodes[size++] = rear;
+                    front = rear;
+                }
+            },
+
+            AddFront:function(){
+                
+            },
+
+            DeleteBack : function(){
+
+            },
+
+            DeleteFront : function(){
+
+            },
+
+            AddByIndex : function(){
+
+            },   
+
+            IsEmpty : function(){
+                if(!this.size===0){
+                    return true;
+                }
+
+                return false;
+            }     
+        }
+
+
+
+
+        /*
+         Создать программную модель двусвязного списка, используя объектно-ориентированный подход
+        */
+         </script>
+</head>
+<body>
+
+</body>
+</html>
