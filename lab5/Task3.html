@@ -4,66 +4,119 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script type="text/javascript">
-        class Node{
+        class Node {
 
-            constructor(left=null, right=null, data){
-                this.left=left;
-                this.right=right;
-                this.data=data;
+            constructor(left = null, right = null, data) {
+                this.left = left;
+                this.right = right;
+                this.data = data;
             }
+
 
         }
 
         let DoubleLinkedList = {
-            Nodes : [],
-            size:0,
-            rear:NaN,
-            front:NaN,
 
-            AddRear : function(data){
-                if(!this.IsEmpty()){
-                    Nodes[size] = new Node(rear, null, data);
-                    rear=Nodes[size++];
+            rear: null,
+            front: null,
+
+            AddRear: function (data) {
+                if ((this.rear==null)) {
+                    if (this.front==null) {
+                        this.front = new Node(undefined, undefined, data);
+                    } else {
+                        this.rear = new Node(front, undefined, data);
+                        this.front.right = this.rear;
+                    }
+                } else {
+                    this.rear.right = new Node(rear, undefined, data);
+                    this.rear = this.rear.right;
+                }
+            },
+
+            AddFront: function (data) {
+                if (this.front==null) {
+                    if(this.rear==null){
+                        this.front = new Node(undefined, undefined, data);
+                    }
+                    else{
+                        this.front = new Node(undefined,this.rear,data);
+                        this.rear.left=this.front;
+                    }
+                } else {
+                    if (this.rear==null) {
+                        this.rear = this.front;
+                        this.front = new Node(undefined, this.rear, data);
+                        this.rear.left=this.front;
+                    } else {
+                        this.front.left = new Node(undefined, this.front.data);
+                        this.front.left.right = this.front;
+                        this.front = this.front.left;
+                    }
+                }
+            },
+
+            DeleteBack: function () {
+                if(this.rear==null){
+                    if(this.front==null){
+                        alert("Список пуст!");
+                    }
+                    else{
+                        delete this.front;
+                    }
                 }
                 else{
-                    rear = new Node(null,null,data);
-                    Nodes[size++] = rear;
-                    front = rear;
+                    delete this.rear;
                 }
             },
 
-            AddFront:function(){
-                
-            },
-
-            DeleteBack : function(){
-
-            },
-
-            DeleteFront : function(){
-
-            },
-
-            AddByIndex : function(){
-
-            },   
-
-            IsEmpty : function(){
-                if(!this.size===0){
-                    return true;
+            DeleteFront: function () {
+                if(this.front==null){
+                    if(this.rear==null){
+                        alert("Список пуст!");
+                    }
+                    else{
+                        delete this.rear;
+                    }
                 }
+                else{
+                    delete this.front;
+                }
+            },
 
-                return false;
-            }     
         }
 
+        do{
+            let choice = parseInt(prompt("Выберите действие: 1 - Добавить элемент в начало списка, 2 - добавить элемент в конец списка</br>," +
+                "3 - удалить элемент из начала списка, 4 - удалить элемент из начала списка"));
 
+            switch (choice){
+                case 1:
+                   DoubleLinkedList.AddFront(prompt("введите информацию для записи в спискок"));
+                   break;
+
+                case 2:
+                    DoubleLinkedList.AddRear(prompt("введите информацию для записи в спискок"));
+                    break;
+
+                case 3:
+                    DoubleLinkedList.DeleteFront();
+                    break;
+
+                case 4:
+                    DoubleLinkedList.DeleteBack();
+                    break;
+
+            }
+
+
+        }while(confirm("Хотите продолжить?"))
 
 
         /*
          Создать программную модель двусвязного списка, используя объектно-ориентированный подход
         */
-         </script>
+    </script>
 </head>
 <body>
 
