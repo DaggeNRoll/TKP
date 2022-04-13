@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="application/javascript">
+
+        let Queue = {
+            arr: [],
+            rear: -1,
+            front: -1,
+            size: 0,
+            height: 100,
+            width: 100,
+            space: 10,
+            realSize: 0,
+
+            SetSize: function (size) {
+                this.size = size;
+            },
+
+            Push: function (x) {
+                if (this.front === 0 && this.rear === this.size - 1 || this.front === this.rear + 1) {
+                    alert("Очередь заполнена!");
+                } else {
+                    if (this.front === -1) {
+                        this.front = 0;
+                    }
+                    this.rear = (this.rear + 1) % this.size;
+                    this.arr[this.rear] = x;
+                    this.realSize++;
+                }
+            },
+
+            Pop: function () {
+                if (this.front === -1) {
+                    alert("Очередь пуста!");
+                } else {
+                    if (this.front === this.rear) {
+                        this.front = -1;
+                        this.rear = -1;
+                    } else {
+                        this.front = (this.front + 1) % this.size;
+                    }
+                    this.realSize--;
+                    return this.arr.shift();
+                }
+            },
+
+            Draw: function () {
+                var canvas = document.getElementById('canvas');
+                var ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < this.arr.length; i++) {
+                    ctx.strokeRect(this.space * (i + 1) + this.width * i, 150, this.width, this.height);
+                    ctx.fillText(this.arr[i], this.space * (i + 1) + this.width * i, this.width + 95);
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div style="text-align: center;">
+    <canvas id="canvas" width="800" height="600"></canvas>
+</div>
+<div style="text-align: center;">
+    <input type="button" value="Open menu" onclick="menu();"/>
+</div>
+<script>
+    size = parseInt(prompt("Введите размер очереди"));
+    Queue.SetSize(size);
+    /*const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.strokeRect(20,150,100,100);*/
+    document.getElementById('canvas').getContext('2d').font = '48px serif';
+    //ctx.fillText('1000',20,215);
+
+    let menu = function () {
+        const choice = prompt("1 - добавить элемент, 2 - удалить элемент");
+
+        switch (choice) {
+            case "1":
+                Queue.Push(prompt("Введите число"));
+                Queue.Draw();
+                break;
+            case "2":
+                alert("Был удалён элемент " + Queue.Pop());
+                Queue.Draw();
+                break;
+        }
+    }
+
+</script>
+</body>
+</html>

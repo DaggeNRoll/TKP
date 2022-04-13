@@ -25,11 +25,11 @@
                     if (this.front==null) {
                         this.front = new Node(undefined, undefined, data);
                     } else {
-                        this.rear = new Node(front, undefined, data);
+                        this.rear = new Node(this.front, undefined, data);
                         this.front.right = this.rear;
                     }
                 } else {
-                    this.rear.right = new Node(rear, undefined, data);
+                    this.rear.right = new Node(this.rear, undefined, data);
                     this.rear = this.rear.right;
                 }
             },
@@ -87,8 +87,8 @@
         }
 
         do{
-            let choice = parseInt(prompt("Выберите действие: 1 - Добавить элемент в начало списка, 2 - добавить элемент в конец списка</br>," +
-                "3 - удалить элемент из начала списка, 4 - удалить элемент из начала списка"));
+            let choice = parseInt(prompt("Выберите действие: 1 - Добавить элемент в начало списка, 2 - добавить элемент в конец списка," +
+                " 3 - удалить элемент из начала списка, 4 - удалить элемент из конца списка"));
 
             switch (choice){
                 case 1:
