@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        class Node {
+
+            constructor(left = null, right = null, data) {
+                this.left = left;
+                this.right = right;
+                this.data = data;
+            }
+
+
+        }
+
+        let DoubleLinkedList = {
+
+            rear: null,
+            front: null,
+            width: 100,
+            height:100,
+            space: 10,
+
+            AddRear: function (data) {
+                if ((this.rear==null)) {
+                    if (this.front==null) {
+                        this.front = new Node(undefined, undefined, data);
+                    } else {
+                        this.rear = new Node(this.front, undefined, data);
+                        this.front.right = this.rear;
+                    }
+                } else {
+                    this.rear.right = new Node(this.rear, undefined, data);
+                    this.rear = this.rear.right;
+                }
+            },
+
+            AddFront: function (data) {
+                if (this.front==null) {
+                    if(this.rear==null){
+                        this.front = new Node(undefined, undefined, data);
+                    }
+                    else{
+                        this.front = new Node(undefined,this.rear,data);
+                        this.rear.left=this.front;
+                    }
+                } else {
+                    if (this.rear==null) {
+                        this.rear = this.front;
+                        this.front = new Node(undefined, this.rear, data);
+                        this.rear.left=this.front;
+                    } else {
+                        this.front.left = new Node(undefined, this.front.data);
+                        this.front.left.right = this.front;
+                        this.front = this.front.left;
+                    }
+                }
+            },
+
+            DeleteBack: function () {
+                if(this.rear==null){
+                    if(this.front==null){
+                        alert("Список пуст!");
+                    }
+                    else{
+                        delete this.front;
+                    }
+                }
+                else{
+                    delete this.rear;
+                }
+            },
+
+            DeleteFront: function () {
+                if(this.front==null){
+                    if(this.rear==null){
+                        alert("Список пуст!");
+                    }
+                    else{
+                        delete this.rear;
+                    }
+                }
+                else{
+                    delete this.front;
+                }
+            },
+
+            Draw: function (){
+
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div style="text-align: center;">
+    <canvas id="canvas" width="800" height="600"></canvas>
+</div>
+<div style="text-align: center;">
+    <input type="button" value="Open menu" onclick="menu();"/>
+</div>
+<script>
+    size = parseInt(prompt("Введите размер очереди"));
+    Queue.SetSize(size);
+    /*const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.strokeRect(20,150,100,100);*/
+    document.getElementById('canvas').getContext('2d').font = '48px serif';
+    //ctx.fillText('1000',20,215);
+
+    let menu = function () {
+        const choice = prompt("1 - добавить элемент, 2 - удалить элемент");
+
+        switch (choice) {
+            case "1":
+                Queue.Push(prompt("Введите число"));
+                Queue.Draw();
+                break;
+            case "2":
+                alert("Был удалён элемент " + Queue.Pop());
+                Queue.Draw();
+                break;
+        }
+    }
+
+</script>
+</body>
+</html>
