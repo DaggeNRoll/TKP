@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c460207-1577-4a41-ac2d-4c77dc40e244" name="Changes" comment="">
+    <list default="true" id="8c460207-1577-4a41-ac2d-4c77dc40e244" name="Changes" comment="comments lab2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab6/Task3.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab6/Task3.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +49,8 @@
       <workItem from="1645521483390" duration="1022000" />
       <workItem from="1645781096457" duration="1189000" />
       <workItem from="1645874565815" duration="34000" />
+      <workItem from="1649939181163" duration="14000" />
+      <workItem from="1650031387556" duration="6052000" />
     </task>
     <task id="LOCAL-00001" summary="comments lab2">
       <created>1645522496330</created>

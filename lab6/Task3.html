@@ -20,12 +20,13 @@
             rear: null,
             front: null,
             width: 100,
-            height:100,
+            height: 100,
             space: 10,
+            count: 0,
 
             AddRear: function (data) {
-                if ((this.rear==null)) {
-                    if (this.front==null) {
+                if ((this.rear == null)) {
+                    if (this.front == null) {
                         this.front = new Node(undefined, undefined, data);
                     } else {
                         this.rear = new Node(this.front, undefined, data);
@@ -35,59 +36,112 @@
                     this.rear.right = new Node(this.rear, undefined, data);
                     this.rear = this.rear.right;
                 }
+                this.count++;
             },
 
             AddFront: function (data) {
-                if (this.front==null) {
-                    if(this.rear==null){
+                if (this.front == null) {
+                    if (this.rear == null) {
                         this.front = new Node(undefined, undefined, data);
-                    }
-                    else{
-                        this.front = new Node(undefined,this.rear,data);
-                        this.rear.left=this.front;
+                    } else {
+                        this.front = new Node(undefined, this.rear, data);
+                        this.rear.left = this.front;
                     }
                 } else {
-                    if (this.rear==null) {
+                    if (this.rear == null) {
                         this.rear = this.front;
                         this.front = new Node(undefined, this.rear, data);
-                        this.rear.left=this.front;
+                        this.rear.left = this.front;
                     } else {
                         this.front.left = new Node(undefined, this.front.data);
                         this.front.left.right = this.front;
                         this.front = this.front.left;
                     }
                 }
+                this.count++;
             },
 
             DeleteBack: function () {
-                if(this.rear==null){
-                    if(this.front==null){
+                if (this.rear == null) {
+                    if (this.front == null) {
                         alert("Список пуст!");
-                    }
-                    else{
+                        return;
+                    } else {
                         delete this.front;
                     }
-                }
-                else{
+                } else {
                     delete this.rear;
                 }
+                this.count--;
             },
 
             DeleteFront: function () {
-                if(this.front==null){
-                    if(this.rear==null){
+                if (this.front == null) {
+                    if (this.rear == null) {
                         alert("Список пуст!");
-                    }
-                    else{
+                        return;
+                    } else {
                         delete this.rear;
                     }
+                } else {
+                    this.front = this.back;
+                    this.front.left = null;
+                    if (this.count !== 2) {
+                        this.back = this.front.right;
+                    }
                 }
-                else{
-                    delete this.front;
-                }
+                this.count--;
             },
 
-            Draw: function (){
+            AddByIndex: function (number, data) {
+                if (number < 0 || number > this.count) {
+                    alert("Invalid index!");
+                    return;
+                } else {
+                    switch (this.count) {
+                        case '0':
+                            this.front = new Node(undefined, undefined, data);
+                            break;
+                        case '1':
+                            if (number === 0) {
+                                this.back = this.front;
+                                this.front = new Node(undefined, this.back, data);
+                                this.back.left = this.front;
+                            } else {
+                                this.back = new Node(this.front, undefined, data);
+                                this.front.right = this.back;
+                            }
+                            break;
+                        case '2':
+                            if (number === 0) {
+                                this.back = this.front;
+                                this.front = new Node(undefined, this.back, data);
+                                this.back.left = this.front;
+                            } else if (number === 1) {
+                                this.back = new Node(this.front, this.back, data);
+                                this.back.right.left = this.back;
+                            } else {
+                                this.back.right = new Node(this.back, undefined, data);
+                            }
+                            break;
+                        default:
+                            if (number === 0) {
+                                this.front.left=new Node(undefined,this.front,data);
+                                this.front=this.front.left;
+                            } else {
+                                let current = this.front;
+                                for (let i = 0; i <= number; i++) {
+                                    current = current.right;
+                                }
+                                current.left.right = new Node(current.left, current, data);
+                                current.left = current.left.right;
+                            }
+                    }
+                }
+                this.count++;
+            },
+
+            Draw: function () {
 
             }
 
