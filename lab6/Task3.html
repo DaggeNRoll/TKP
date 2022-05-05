@@ -12,7 +12,6 @@
                 this.data = data;
             }
 
-
         }
 
         let DoubleLinkedList = {
@@ -53,7 +52,7 @@
                         this.front = new Node(undefined, this.rear, data);
                         this.rear.left = this.front;
                     } else {
-                        this.front.left = new Node(undefined, this.front.data);
+                        this.front.left = new Node(undefined, this.front, data);
                         this.front.left.right = this.front;
                         this.front = this.front.left;
                     }
@@ -70,7 +69,12 @@
                         delete this.front;
                     }
                 } else {
-                    delete this.rear;
+                    if (this.count === 2) {
+                        delete this.rear;
+                    } else {
+                        this.rear = this.rear.left;
+                        this.rear.right = null;
+                    }
                 }
                 this.count--;
             },
@@ -84,10 +88,13 @@
                         delete this.rear;
                     }
                 } else {
-                    this.front = this.back;
-                    this.front.left = null;
-                    if (this.count !== 2) {
-                        this.back = this.front.right;
+                    if (this.count === 2) {
+                        this.front = this.rear;
+                        this.front.left = null;
+                        delete this.rear;
+                    } else {
+                        this.front = this.front.right;
+                        this.front.left = null;
                     }
                 }
                 this.count--;
@@ -99,38 +106,38 @@
                     return;
                 } else {
                     switch (this.count) {
-                        case '0':
+                        case 0:
                             this.front = new Node(undefined, undefined, data);
                             break;
-                        case '1':
+                        case 1:
                             if (number === 0) {
-                                this.back = this.front;
-                                this.front = new Node(undefined, this.back, data);
-                                this.back.left = this.front;
+                                this.rear = this.front;
+                                this.front = new Node(undefined, this.rear, data);
+                                this.rear.left = this.front;
                             } else {
-                                this.back = new Node(this.front, undefined, data);
-                                this.front.right = this.back;
+                                this.rear = new Node(this.front, undefined, data);
+                                this.front.right = this.rear;
                             }
                             break;
-                        case '2':
+                        case 2:
                             if (number === 0) {
-                                this.back = this.front;
-                                this.front = new Node(undefined, this.back, data);
-                                this.back.left = this.front;
+                                //this.rear = this.front;
+                                this.front = new Node(undefined, this.front, data);
+                                this.front.right.left = this.front;
                             } else if (number === 1) {
-                                this.back = new Node(this.front, this.back, data);
-                                this.back.right.left = this.back;
+                                this.rear = new Node(this.front, this.rear, data);
+                                this.rear.right.left = this.rear;
                             } else {
-                                this.back.right = new Node(this.back, undefined, data);
+                                this.rear.right = new Node(this.rear, undefined, data);
                             }
                             break;
                         default:
                             if (number === 0) {
-                                this.front.left=new Node(undefined,this.front,data);
-                                this.front=this.front.left;
+                                this.front.left = new Node(undefined, this.front, data);
+                                this.front = this.front.left;
                             } else {
                                 let current = this.front;
-                                for (let i = 0; i <= number; i++) {
+                                for (let i = 0; i < number; i++) {
                                     current = current.right;
                                 }
                                 current.left.right = new Node(current.left, current, data);
@@ -141,10 +148,56 @@
                 this.count++;
             },
 
+            DeleteByIndex: function (index) {
+                if (index < 0 || index >= this.count) {
+                    alert("Invalid index!");
+                    return;
+                }
+                switch (this.count) {
+                    case 1:
+                        delete this.front;
+                        break;
+                    case 2:
+                        switch (index) {
+                            case 0:
+                                this.front = this.back;
+                                delete this.back;
+                                break;
+                            case 1:
+                                delete this.back;
+                                break;
+                        }
+                        break;
+                    default:
+                        if (index === 0) {
+                            this.DeleteFront();
+                        } else if (index === this.count - 1) {
+                            this.DeleteBack();
+                        } else {
+                            let current = this.front;
+                            for (let i = 0; i < index; i++) {
+                                current = current.right;
+                            }
+                            current.left.right = current.right;
+                            current.right.left = current.left;
+                        }
+
+                }
+                this.count--;
+            },
+
             Draw: function () {
-
+                var canvas = document.getElementById('canvas');
+                2
+                var ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let current = this.front;
+                for (let i = 0; i < this.count; i++) {
+                    ctx.strokeRect(this.space * (i + 1) + this.width * i, 150, this.width, this.height);
+                    ctx.fillText(current.data, this.space * (i + 1) + this.width * i, this.width + 95);
+                    current = current.right;
+                }
             }
-
         }
     </script>
 </head>
@@ -156,25 +209,37 @@
     <input type="button" value="Open menu" onclick="menu();"/>
 </div>
 <script>
-    size = parseInt(prompt("Введите размер очереди"));
-    Queue.SetSize(size);
-    /*const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-    ctx.strokeRect(20,150,100,100);*/
+
     document.getElementById('canvas').getContext('2d').font = '48px serif';
-    //ctx.fillText('1000',20,215);
 
     let menu = function () {
-        const choice = prompt("1 - добавить элемент, 2 - удалить элемент");
+        const choice = prompt("1 - добавить элемент в начало, 2 - добавить элемент в конец, 3 - добавить элемент по индексу, " +
+            "4 - удалить элемент из начала, 5 - удалить элемент с конца, 6 удалить элемент по индексу");
 
         switch (choice) {
             case "1":
-                Queue.Push(prompt("Введите число"));
-                Queue.Draw();
+                DoubleLinkedList.AddFront(parseInt(prompt("Введите число")));
+                DoubleLinkedList.Draw();
                 break;
             case "2":
-                alert("Был удалён элемент " + Queue.Pop());
-                Queue.Draw();
+                DoubleLinkedList.AddRear(parseInt(prompt("Введите число")));
+                DoubleLinkedList.Draw();
+                break;
+            case "3":
+                DoubleLinkedList.AddByIndex(parseInt(prompt("Введите индекс")), parseInt(prompt("Введите число")));
+                DoubleLinkedList.Draw();
+                break;
+            case "4":
+                DoubleLinkedList.DeleteFront();
+                DoubleLinkedList.Draw();
+                break;
+            case "5":
+                DoubleLinkedList.DeleteBack();
+                DoubleLinkedList.Draw();
+                break;
+            case "6":
+                DoubleLinkedList.DeleteByIndex(parseInt(prompt("Введите индекс")));
+                DoubleLinkedList.Draw();
                 break;
         }
     }
