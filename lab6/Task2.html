@@ -70,11 +70,9 @@
 <script>
     size = parseInt(prompt("Введите размер очереди"));
     Queue.SetSize(size);
-    /*const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-    ctx.strokeRect(20,150,100,100);*/
+
     document.getElementById('canvas').getContext('2d').font = '48px serif';
-    //ctx.fillText('1000',20,215);
+
 
     let menu = function () {
         const choice = prompt("1 - добавить элемент, 2 - удалить элемент");
