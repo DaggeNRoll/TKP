@@ -1,0 +1,28 @@
+<html lang="ru">
+<head>
+    <title>Вывод на экран входящих параметров</title>
+</head>
+<body>
+<?php
+$color = $_REQUEST["color"];//получение цвета из формы
+
+foreach ($_REQUEST["Names"] as $name) {//получение имени из формы
+    echo $name, ",<br>";
+}
+
+if (isset($_REQUEST["Radio1"])) {//получение выбранного приветствия из формы
+    echo $_REQUEST["Radio1"];
+} elseif (isset($_REQUEST["Radio2"])) {
+    echo $_REQUEST["Radio2"];
+} elseif (isset($_REQUEST["Radio3"])) {
+    echo $_REQUEST["Radio3"];
+} else {
+    echo "Где-то произошла ошибка";
+}
+
+?>
+<script>
+    document.body.style.backgroundColor = '<?php echo $color; ?>';//смена фона страницы
+</script>
+</body>
+</html>
