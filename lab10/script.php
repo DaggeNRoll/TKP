@@ -8,7 +8,7 @@ if (!file_exists($path))
 if (empty($_FILES['UserFile']['tmp_name']))
     echo "<form method=post enctype=multipart/form-data> 
             Выберите файл: <input type=file name=UserFile> 
-            <br>Если существует файл с таким же именем на сервере, Вы хотите его заменить? 
+            <br>Заменять ли файл с таким же названием при его наличии? 
             <select name=confirm>
                 <option value=1>Да</option> 
                 <option value=0>Нет</option> 

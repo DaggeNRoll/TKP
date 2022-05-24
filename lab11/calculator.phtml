@@ -1,0 +1,42 @@
+<?php
+
+function show()
+{
+?>
+<form method="post" action="calculator.php">
+    <table border="1" cellspacing="2" cellpadding="2">
+        <tr>
+            <td>Первое число: </td><td><input size="14"
+                                              type="text" name="first"></td>
+        </tr>
+        <tr>
+            <td>Второе число: </td><td><input size="14"
+                                              type="text" name="second"></td>
+        </tr>
+        <tr><td>
+                <select size="1" name="action">
+                    <option value="sum">Сложить</option>
+                    <option value="min">Вычесть</option>
+                    <option value="umn">Умножить</option>
+                    <option value="del">Разделить</option>
+                    <option value="stepen">Возвести в
+                        степень</option>
+
+                    <option value="percent">Вычислить процент от числа</option>
+                    <option value="sqrt">Вычислить квадратный корень</option>
+                    <option value="sin">Вычислить синус</option>
+                    <option value="cos">Вычислить косинус</option>
+                    <option value="tg">Вычислить тангенс</option>
+                    <option value="ctg">Вычислить котангенс</option>
+                </select></td>
+            <td><input type="submit" value="Выполнить">
+            </td></tr>
+    <?php
+}
+
+    show();
+
+    ?>
+
+    </table>
+</form>
